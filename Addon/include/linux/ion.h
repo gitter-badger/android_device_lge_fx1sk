@@ -22,7 +22,6 @@
 #include <linux/types.h>
 
 struct ion_handle;
-typedef struct ion_handle *ion_user_handle_t;
 /**
  * enum ion_heap_types - list of all possible types of heaps
  * @ION_HEAP_TYPE_SYSTEM:	 memory allocated via vmalloc
@@ -35,9 +34,7 @@ typedef struct ion_handle *ion_user_handle_t;
  *				carveout heap, allocations are physically
  *				contiguous. Used for content protection.
  * @ION_HEAP_TYPE_DMA:          memory allocated via DMA API
- * @ION_NUM_HEAPS:		 helper for iterating over heaps, a bit mask
- * 				 is used to identify the heaps, so only 32
- * 				 total heap types are supported
+ * @ION_HEAP_END:		helper for iterating over heaps
  */
 enum ion_heap_type {
 	ION_HEAP_TYPE_SYSTEM,
@@ -513,9 +510,9 @@ static inline int msm_ion_do_cache_op(struct ion_client *client,
 struct ion_allocation_data {
 	size_t len;
 	size_t align;
-	unsigned int heap_id_mask;
+	unsigned int heap_mask;
 	unsigned int flags;
-	ion_user_handle_t handle;
+	struct ion_handle *handle;
 };
 
 /**
@@ -529,7 +526,7 @@ struct ion_allocation_data {
  * provides the file descriptor and the kernel returns the handle.
  */
 struct ion_fd_data {
-	ion_user_handle_t handle;
+	struct ion_handle *handle;
 	int fd;
 };
 
@@ -538,7 +535,7 @@ struct ion_fd_data {
  * @handle:	a handle
  */
 struct ion_handle_data {
-	ion_user_handle_t handle;
+	struct ion_handle *handle;
 };
 
 /**
@@ -609,13 +606,5 @@ struct ion_custom_data {
  */
 #define ION_IOC_CUSTOM		_IOWR(ION_IOC_MAGIC, 6, struct ion_custom_data)
 
-/**
- * DOC: ION_IOC_SYNC - syncs a shared file descriptors to memory
- *
- * Deprecated in favor of using the dma_buf api's correctly (syncing
- * will happend automatically when the buffer is mapped to a device).
- * If necessary should be used after touching a cached buffer from the cpu,
- * this will make the buffer in memory coherent.
- */
-#define ION_IOC_SYNC		_IOWR(ION_IOC_MAGIC, 7, struct ion_fd_data)
+
 #endif /* _LINUX_ION_H */
