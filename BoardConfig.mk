@@ -19,7 +19,7 @@ TARGET_CPU_VARIANT := krait
 TARGET_CPU_SMP := true
 ARCH_ARM_HAVE_TLS_REGISTER := true
 
-# Krait optimizations (from f260s)
+# Krait optimizations
 TARGET_USE_KRAIT_BIONIC_OPTIMIZATION := true
 TARGET_USE_KRAIT_PLD_SET := true
 TARGET_KRAIT_BIONIC_PLDOFFS := 10
@@ -47,7 +47,6 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 
 TARGET_PREBUILT_KERNEL := device/lge/fx1sk/kernel
 
-BOARD_HAS_NO_SELECT_BUTTON := true
 TARGET_NO_RADIOIMAGE := true
 
 # Display
@@ -64,7 +63,7 @@ BOARD_BLUEDROID_VENDOR_CONF := device/lge/fx1sk/Addon/bluetooth/vnd_fx1sk.txt
 BOARD_USES_QCOM_HARDWARE := true
 TARGET_USES_QCOM_BSP := true
 BOARD_USES_QCOM_LIBS := true
-#TARGET_QCOM_DISPLAY_VARIANT := caf
+TARGET_QCOM_DISPLAY_VARIANT := caf
 TARGET_QCOM_MEDIA_VARIANT := caf
 BOARD_HARDWARE_CLASS := device/lge/fx1sk/Addon/cmhw/
 TARGET_QCOM_AUDIO_VARIANT := caf
@@ -93,32 +92,32 @@ WIFI_DRIVER_FW_PATH_STA          := "/system/etc/firmware/fw_bcmdhd.bin"
 WIFI_DRIVER_FW_PATH_AP           := "/system/etc/firmware/fw_bcmdhd_apsta.bin"
 
 # Sound
+#ALSA AUDIO is not working
 BOARD_USES_LEGACY_ALSA_AUDIO :=true
 BOARD_USES_ALSA_AUDIO:= true
 BOARD_USES_FLUENCE_INCALL := true
 BOARD_USES_SEPERATED_AUDIO_INPUT := true
 
-# Recovery
+# Recovery (Not build)
 TARGET_RECOVERY_FSTAB = device/lge/fx1sk/Addon/recovery.fstab
-TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
+#TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 #BOARD_USE_CUSTOM_RECOVERY_FONT:= \"roboto_23x41.h\"
 #NABLE_LOKI_RECOVERY := true
 #ENABLE_LOKI := true
-BOARD_RECOVERY_SWIPE := true
+#BOARD_RECOVERY_SWIPE := true
 #TARGET_RELEASETOOLS_EXTENSIONS := device/lge/fx1sk/Addon/loki
-BOARD_CUSTOM_GRAPHICS := ../../../device/lge/fx1sk/Addon/recovery/graphics.c
+#BOARD_CUSTOM_GRAPHICS := ../../../device/lge/fx1sk/Addon/recovery/graphics.c
 
 # OTA
 TARGET_OTA_ASSERT_DEVICE := fx1sk
 
 # Charger
-COMMON_GLOBAL_CFLAGS += -DBOARD_CHARGING_CMDLINE_NAME='"androidboot.mode"' -DBOARD_CHARGING_CMDLINE_VALUE='"chargerlogo"'
+COMMON_GLOBAL_CFLAGS += -DBOARD_CHARGING_CMDLINE_NAME='"androidboot.mode"' -DBOARD_CHARGING_CMDLINE_VALUE='"chargerlogo"' -DLG_CAMERA_HARDWARE
 BOARD_CHARGER_ENABLE_SUSPEND := true
 BOARD_HAVE_LOW_LATENCY_AUDIO := true
 
 # Camera
 USE_DEVICE_SPECIFIC_CAMERA := true
-COMMON_GLOBAL_CFLAGS += -DLG_CAMERA_HARDWARE
 
 # Other
 BOARD_USES_SECURE_SERVICES := true
