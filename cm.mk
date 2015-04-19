@@ -1,6 +1,5 @@
-## Specify phone tech before including full_phone
-# Not working
-# $(call inherit-product, vendor/cm/config/gsm.mk)
+TARGET_SCREEN_HEIGHT := 1280
+TARGET_SCREEN_WIDTH := 720
 
 # Release name
 PRODUCT_RELEASE_NAME := fx1sk

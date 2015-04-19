@@ -1,10 +1,12 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
-# The gps config appropriate for this device
-$(call inherit-product, device/common/gps/gps_us_supl.mk)
+$(call inherit-product-if-exists, vendor/lge/fx1sk/fx1sk-vendor.mk)
 
-DEVICE_PACKAGE_OVERLAYS += device/lge/fx1sk/overlay
+DEVICE_PACKAGE_OVERLAYS += device/lge/fx1sk/Addon/overlay
 
+PRODUCT_AAPT_CONFIG := normal hdpi xhdpi
+PRODUCT_AAPT_PREF_CONFIG := xhdpi
+PRODUCT_LOCALES += ko_KR xhdpi
 
 ifeq ($(TARGET_PREBUILT_KERNEL),)
 	LOCAL_KERNEL := device/lge/fx1sk/kernel
@@ -12,167 +14,172 @@ else
 	LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
 endif
 
+ifeq ($(TARGET_BUILD_VARIANT),user)
+    NFCEE_ACCESS_PATH := $(LOCAL_PATH)/Addon/nfc/nfcee_access.xml
+else
+    NFCEE_ACCESS_PATH := $(LOCAL_PATH)/Addon/nfc/nfcee_access_debug.xml
+endif
+
+PRODUCT_PACKAGES += \
+        LiveWallpapers \
+        LiveWallpapersPicker \
+        VisualizationWallpapers \
+        librs_jni \
+        nfc.msm8960 \
+        libnfc \
+        libnfc_jni \
+        Nfc \
+        Tag \
+        com.android.nfc_extras \
+        charger_res_images \
+        charger \
+        make_ext4fs \
+	power.msm8960 \
+	librs_jni \
+	com.android.future.usb.accessory \
+	e2fsck \
+	libgenlock \
+	liboverlay \
+	hwcomposer.msm8960 \
+	gralloc.msm8960 \
+	copybit.msm8960 \
+	memtrack.msm8960 \
+	audio_policy.msm8960 \
+	audio.primary.msm8960 \
+	audio.a2dp.default \
+	audio.usb.default \
+	audio.r_submix.default \
+	libaudio-resampler \
+	libqcomvoiceprocessing \
+        libmm-omxcore \
+	libdivxdrmdecrypt \
+	libOmxVdec \
+	libOmxVenc \
+	libOmxCore \
+	libstagefrighthw \
+	libc2dcolorconvert \
+	hdmid \
+	libgps.utils \
+	gps.msm8960 \
+	hwaddrs \
+        hci_qcomm_init \
+        lights.msm8960 \
+        f2fs-tools \
+        exfat \
+        ffmpeg \
+        naver-fonts \
+	brcm_patchram_plus \
+	loki.sh \
+	loki_tool_static_gproj \
+	recovery-transform.sh
+
 PRODUCT_COPY_FILES += \
-    $(LOCAL_KERNEL):kernel
+        $(LOCAL_KERNEL):kernel \
+        $(LOCAL_PATH)/Addon/nfc.default.so:system/lib/hw/nfc.default.so \
+        $(LOCAL_PATH)/Addon/camera.vendor.msm8960.so:system/lib/hw/camera.vendor.msm8960.so \
+        $(LOCAL_PATH)/Addon/BCM4334B0_002.001.013.0271.0333.hcd:/system/vendor/firmware/BCM4334B0_002.001.013.0271.0333.hcd \
+        $(LOCAL_PATH)/Addon/init.fx1sk-common.rc:root/init.fx1sk-common.rc \
+        $(LOCAL_PATH)/Addon/init.fx1sk.usb.rc:root/init.fx1sk.usb.rc \
+	$(LOCAL_PATH)/Addon/audio_policy.conf:system/etc/audio_policy.conf \
+	$(LOCAL_PATH)/Addon/qosmgr_rules.xml:system/etc/qosmgr_rules.xml \
+	$(LOCAL_PATH)/Addon/media_profiles.xml:system/etc/media_profiles.xml \
+	$(LOCAL_PATH)/Addon/media_codecs.xml:system/etc/media_codecs.xml \
+        $(LOCAL_PATH)/Addon/kickstart_checker.sh:system/etc/kickstart_checker.sh \
+	$(LOCAL_PATH)/Addon/hs_detect.kl:system/usr/keylayout/hs_detect.kl \
+	$(LOCAL_PATH)/Addon/pmic8xxx_pwrkey.kl:system/usr/keylayout/pmic8xxx_pwrkey.kl \
+	$(LOCAL_PATH)/Addon/hs_detect.kcm:system/usr/keychars/hs_detect.kcm \
+	$(LOCAL_PATH)/Addon/pmic8xxx_pwrkey.kcm:system/usr/keychars/pmic8xxx_pwrkey.kcm \
+	$(LOCAL_PATH)/Addon/touch_dev.idc:system/usr/idc/touch_dev.idc \
+	$(LOCAL_PATH)/Addon/touch_dev.kl:system/usr/keylayout/touch_dev.kl \
+	$(LOCAL_PATH)/Addon/audio_effects.conf:system/vendor/etc/audio_effects.conf \
+	$(LOCAL_PATH)/Addon/fetch-swv:system/bin/fetch-swv \
+	$(LOCAL_PATH)/Addon/mixer_paths.xml:system/etc/mixer_paths.xml \
+	$(LOCAL_PATH)/Addon/thermald.conf:system/etc/thermald.conf \
+	$(LOCAL_PATH)/Addon/init.fx1sk.rc:root/init.fx1sk.rc \
+	$(LOCAL_PATH)/Addon/recovery.fstab:root/recovery.fstab \
+	$(LOCAL_PATH)/Addon/ueventd.fx1sk.rc:root/ueventd.fx1sk.rc \
+	$(LOCAL_PATH)/Addon/recovery/postrecoveryboot.sh:recovery/root/sbin/postrecoveryboot.sh \
+	$(LOCAL_PATH)/Addon/keypad_8064.kl:system/usr/keylayout/gk-keypad-8064.kl \
+	$(LOCAL_PATH)/Addon/bcmdhd.cal:system/etc/wifi/bcmdhd.cal \
+	$(LOCAL_PATH)/Addon/gps.conf:system/etc/gps.conf \
+	$(LOCAL_PATH)/Addon/initlogo.rle:root/logo.rle \
+	$(LOCAL_PATH)/Addon/initlogo.rle:root/initlogo.rle \
+        $(NFCEE_ACCESS_PATH):system/etc/nfcee_access.xml \
+	frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
+	frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
+	frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
+	frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
+	frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
+	frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
+	frameworks/native/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
+	frameworks/native/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
+	frameworks/native/data/etc/android.hardware.sensor.gyroscope.xml:system/etc/permissions/android.hardware.sensor.gyroscope.xml \
+	frameworks/native/data/etc/android.hardware.sensor.barometer.xml:system/etc/permissions/android.hardware.sensor.barometer.xml \
+	frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
+	frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
+	frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
+	frameworks/native/data/etc/android.hardware.audio.low_latency.xml:system/etc/permissions/android.hardware.audio.low_latency.xml \
+	frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml \
+	frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
+        frameworks/native/data/etc/com.android.nfc_extras.xml:system/etc/permissions/com.android.nfc_extras.xml \
+        frameworks/native/data/etc/android.hardware.nfc.hce.xml:system/etc/permissions/android.hardware.nfc.hce.xml \
+        frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml
 
+
+
+PRODUCT_PROPERTY_OVERRIDES += \
+	ro.opengles.version=196608
+	persist.audio.handset.mic.type=digital \
+	persist.audio.dualmic.config=endfire \
+	persist.audio.fluence.voicecall=true \
+	persist.audio.vr.enable=false \
+        persist.audio.handset.mic=digital \
+	persist.audio.fluence.mode=endfire \
+	persist.audio.lowlatency.rec=false \
+	af.resampler.quality=255 \
+	persist.radio.apm_sim_not_pwdn=1 \
+	ro.telephony.call_ring.multiple=0 \
+	ro.telephony.ril_class=LgeLteRIL \
+	ro.telephony.ril.v3=qcomdsds \
+	persist.hwc.mdpcomp.enable=true \
+	com.qc.hardware=true \
+	debug.egl.hw=1 \
+        debug.sf.hw=1 \
+        debug.mdpcomp.logs=0 \
+	drm.service.enabled=true \
+	wifi.interface=wlan0 \
+	wifi.supplicant_scan_interval=180 \
+	media.aac_51_output_enabled=true \
+	debug.egl.recordable.rgba8888=1 \
+	ro.qc.sensors.wl_dis=true \
+	ro.qualcomm.sensors.smd=true \
+	ro.sf.lcd_density=320 \
+	ro.bt.bdaddr_path=/data/misc/bdaddr \
+	ro.telephony.default_network=9 \
+	telephony.lteOnGsmDevice=1 \
+        ro.hwui.text_cache_width=2048 \
+        ro.qualcomm.cabl=1 \
+        persist.gps.qmienabled=true \
+        ro.vendor.extension_library=/system/lib/libqc-opt.so \
+        ro.use_data_netmgrd=true \
+        persist.data.netmgrd.qos.enable=false 
+
+PRODUCT_TAGS += dalvik.gc.type-precise
+
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+	rild.libpath=/system/lib/libril-qc-qmi-1.so \
+	persist.sys.usb.config=mtp	
+
+# RECOVERY_VARIANT := philz
+
+$(call inherit-product, hardware/qcom/msm8960/msm8960.mk)
+$(call inherit-product, frameworks/base/data/sounds/AudioPackage10.mk)
 $(call inherit-product, build/target/product/full.mk)
-
+$(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
+$(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/config/config-bcm.mk)
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 PRODUCT_NAME := full_fx1sk
 PRODUCT_DEVICE := fx1sk
 
-## Customize
-
-# Audio
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/Addon/audio/audio_effects.conf:system/etc/audio_effects.conf \
-    $(LOCAL_PATH)/Addon/audio/audio_policy.conf:system/etc/audio_policy.conf \
-    $(LOCAL_PATH)/Addon/audio/mixer_paths.xml:system/etc/mixer_paths.xml
-
-# NFC packages
-PRODUCT_PACKAGES += \
-    nfc.msm8960 \
-    libnfc \
-    libnfc_jni \
-    Nfc \
-    Tag \
-    com.android.nfc_extras
-
-# NFC access control + feature files + configuration
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/com.android.nfc_extras.xml:system/etc/permissions/com.android.nfc_extras.xml \
-    frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml \
-    frameworks/native/data/etc/android.hardware.nfc.hce.xml:system/etc/permissions/android.hardware.nfc.hce.xml \
-    $(LOCAL_PATH)/Addon/nfc/nfcee_access.xml:system/etc/nfcee_access.xml \
-    $(LOCAL_PATH)/Addon/nfc/nfcee_access_debug.xml:system/etc/nfcee_access_debug.xml \
-    $(LOCAL_PATH)/Addon/nfc/libnfc-brcm.conf:system/etc/libnfc-brcm.conf
-
-
-# Boot Animation
-TARGET_SCREEN_HEIGHT := 1280
-TARGET_SCREEN_WIDTH := 720
-
-# Device uses high-density artwork where available
-PRODUCT_AAPT_CONFIG := normal hdpi xhdpi
-PRODUCT_AAPT_PREF_CONFIG := xhdpi
-PRODUCT_LOCALES += ko_KR xhdpi
-
-# call dalvik heap config
-$(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-2048-dalvik-heap.mk)
-
-# call hwui memory config (Disabled)
-# $(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-2048-hwui-memory.mk)
-
-# call vendor
-$(call inherit-product-if-exists, vendor/lge/fx1sk/fx1sk-vendor.mk)
-
-# Inherit from msm8960-common (Disabled)
-#$(call inherit-product, device/lge/msm8960-common/msm8960.mk)
-
-## MSM8960
-
-# Media config
-PRODUCT_COPY_FILES += \
-    device/lge/msm8960-common/configs/media_codecs.xml:system/etc/media_codecs.xml
-
-# apn config
-PRODUCT_COPY_FILES += \
-    device/lge/msm8960-common/configs/apns-conf.xml:/system/etc/apns-conf.xml
-
-# Sound configs
-PRODUCT_COPY_FILES += \
-    device/lge/msm8960-common/configs/audio_policy.conf:system/etc/audio_policy.conf
-
-# Permissions
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
-    frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
-    frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
-    frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
-    frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml \
-    frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
-    frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
-    frameworks/native/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
-    frameworks/native/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
-    frameworks/native/data/etc/android.hardware.sensor.gyroscope.xml:system/etc/permissions/android.hardwardware.sensor.gyroscope.xml \
-    frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
-    frameworks/native/data/etc/android.hardware.touchscreen.multitouch.distinct.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.distinct.xml \
-    frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
-    frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
-    frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
-    frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
-    frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
-    frameworks/native/data/etc/android.hardware.sensor.compass.xml:system/etc/permissions/android.hardware.compass.xml \
-    frameworks/native/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.cdma.xml
-
-# Audio
-PRODUCT_PACKAGES += \
-    audio_policy.msm8960 \
-    audio.primary.msm8960 \
-    audio.a2dp.default \
-    audio.usb.default \
-    audio.r_submix.default \
-    libalsa-intf \
-    libaudioutils
-
-# Graphics
-# copybit.msm8960 is an error
-PRODUCT_PACKAGES += \
-    gralloc.msm8960 \
-    hwcomposer.msm8960 \
-    memtrack.msm8960 \
-    libgenlock \
-    libmemalloc \
-    liboverlay \
-    libQcomUI \
-    libtilerenderer
-
-# NFC
-
-# Commands to migrate prefs from com.android.nfc3 to com.android.nfc
-PRODUCT_COPY_FILES += $(call add-to-product-copy-files-if-exists,\
-packages/apps/Nfc/migrate_nfc.txt:system/etc/updatecmds/migrate_nfc.txt)
-
-# NFC EXTRAS add-on API
-PRODUCT_PACKAGES += \
-    com.android.nfc_extras
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/com.android.nfc_extras.xml:system/etc/permissions/com.android.nfc_extras.xml
-
-PRODUCT_PACKAGES += \
-    nfc.msm8960 \
-    libnfc \
-    libnfc_jni \
-    Nfc \
-    Tag
-
-# OMX
-PRODUCT_PACKAGES += \
-    libdivxdrmdecrypt \
-    libmm-omxcore \
-    libOmxCore \
-    libOmxVdec \
-    libOmxVenc \
-    libOmxAacEnc \
-    libOmxAmrEnc \
-    libstagefrighthw
-
-# HDMI
-PRODUCT_PACKAGES += \
-    hdmid
-
-# USB
-PRODUCT_PACKAGES += \
-    com.android.future.usb.accessory
-
-# Live wallpapers
-PRODUCT_PACKAGES += \
-    LiveWallpapers \
-    LiveWallpapersPicker \
-    VisualizationWallpapers \
-    librs_jni
-
-# Filesystem management tools
-PRODUCT_PACKAGES += \
-    make_ext4fs \
-    setup_fs
+# Build Hack
+$(shell mkdir -p ~/android/cm/out/target/product/fx1sk/obj/KERNEL_OBJ/usr)

@@ -1,8 +1,11 @@
+BOARD_VENDOR := lge
+
+TARGET_SPECIFIC_HEADER_PATH := device/lge/fx1sk/Addon/include
+
+USE_CAMERA_STUB := true
+
 # inherit from the proprietary version
 -include vendor/lge/fx1sk/BoardConfigVendor.mk
-
-# Inherit from MSM8960 common (Jellybean..)
-# -include device/msm8960-common/BoardConfigCommon.mk
 
 # CPU
 TARGET_ARCH := arm
@@ -15,25 +18,18 @@ TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_CPU_VARIANT := krait
 TARGET_CPU_SMP := true
 ARCH_ARM_HAVE_TLS_REGISTER := true
+
+# Krait optimizations (from f260s)
+TARGET_USE_KRAIT_BIONIC_OPTIMIZATION := true
+TARGET_USE_KRAIT_PLD_SET := true
+TARGET_KRAIT_BIONIC_PLDOFFS := 10
+TARGET_KRAIT_BIONIC_PLDTHRESH := 10
+TARGET_KRAIT_BIONIC_BBTHRESH := 64
+TARGET_KRAIT_BIONIC_PLDSIZE := 64
+
+# Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := fx1sk
-
-# Init
-TARGET_PROVIDES_INIT_RC := true
-
-# QCOM hardware
-BOARD_USES_QCOM_HARDWARE := true
-
-# PMEM compatibility
-# linux/android_pmem.h: No such file or directory
-#BOARD_NEEDS_MEMORYHEAPPMEM := true
-
-# Preload bootanimation
-TARGET_BOOTANIMATION_PRELOAD := true
-
-# Flags
-TARGET_GLOBAL_CFLAGS += -mfpu=neon -mfloat-abi=softfp
-TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
-COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE
+TARGET_BOOTLOADER_NAME=fx1sk
 
 # Kernel
 BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=fx1sk user_debug=31 msm_rtb.filter=0x3F ehci-hcd.park=3 maxcpus=2 lpj=67741
@@ -41,49 +37,6 @@ BOARD_KERNEL_BASE := 0x80200000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000 --tags_offset 0x00000100 --kernel_offset 0x00008000
 
-# Bluetooth
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/lge/fx1sk/Addon/bluetooth
-
-# Camera
-USE_DEVICE_SPECIFIC_CAMERA := true
-USE_CAMERA_STUB := true
-
-# Dex (Copied by One+)
-ifeq ($(HOST_OS),linux)
-  ifeq ($(TARGET_BUILD_VARIANT),user)
-    ifeq ($(WITH_DEXPREOPT),)
-      WITH_DEXPREOPT := true
-    endif
-  endif
-endif
-DONT_DEXPREOPT_PREBUILTS := true
-
-# Graphics
-USE_OPENGL_RENDERER := true
-TARGET_NO_INITLOGO := true
-#COMMON_GLOBAL_CFLAGS += -DQCOM_NO_SECURE_PLAYBACK -DQCOM_ROTATOR_KERNEL_FORMATS
-TARGET_NO_HW_VSYNC := true
-BOARD_USES_HWCOMPOSER := true
-BOARD_USES_GENLOCK := true
-TARGET_USES_C2D_COMPOSITION := true
-TARGET_USES_ION := true
-#TARGET_SF_BYPASS := true
-TARGET_USES_OVERLAY := true
-#TARGET_HARDWARE_3D := true
-TARGET_QCOM_HDMI_OUT := true
-BOARD_EGL_CFG := device/lge/fx1sk/Addon/configs/egl.cfg
-
-BOARD_USES_ADRENO_200 := true
-
-# Webkit
-ENABLE_WEBGL := true
-TARGET_FORCE_CPU_UPLOAD := true
-WEBCORE_INPAGE_VIDEO := true
-
-# CMHW
-BOARD_HARDWARE_CLASS += device/lge/fx1sk/Addon/cmhw
-
-# Partition
 BOARD_BOOTIMAGE_PARTITION_SIZE := 12582912
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 12582912
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1798307840
@@ -92,26 +45,98 @@ BOARD_CACHEIMAGE_PARTITION_SIZE := 826277888
 BOARD_PERSISTIMAGE_PARTITION_SIZE := 5127433
 BOARD_FLASH_BLOCK_SIZE := 131072
 
-# Kernel
 TARGET_PREBUILT_KERNEL := device/lge/fx1sk/kernel
 
-# Other
 BOARD_HAS_NO_SELECT_BUTTON := true
+TARGET_NO_RADIOIMAGE := true
 
-BOARD_VOLD_CRYPTFS_MIGRATE := true
+# Display
+BOARD_EGL_CFG := device/lge/fx1sk/Addon/egl.cfg
+TARGET_DISPLAY_INSECURE_MM_HEAP := true
+USE_OPENGL_RENDERER := true
 
-# Audio
-AUDIO_FEATURE_LOW_LATENCY_PRIMARY := true
-AUDIO_FEATURE_ENABLED_LOW_LATENCY_CAPTURE := true
-BOARD_USES_ALSA_AUDIO := true
-TARGET_USES_ION_AUDIO := true
+# BlueTooth
+BOARD_HAVE_BLUETOOTH := true
+BOARD_HAVE_BLUETOOTH_BCM := true
+BOARD_BLUEDROID_VENDOR_CONF := device/lge/fx1sk/Addon/bluetooth/vnd_fx1sk.txt
 
-# JIT / Optimizations
-WITH_DEXPREOPT := true
-WITH_JIT := true
-ENABLE_JSC_JIT := true
-JS_ENGINE := v8
+# Qualcomm
+BOARD_USES_QCOM_HARDWARE := true
+TARGET_USES_QCOM_BSP := true
+BOARD_USES_QCOM_LIBS := true
+#TARGET_QCOM_DISPLAY_VARIANT := caf
+TARGET_QCOM_MEDIA_VARIANT := caf
+BOARD_HARDWARE_CLASS := device/lge/fx1sk/Addon/cmhw/
+TARGET_QCOM_AUDIO_VARIANT := caf
+TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
+
+# RIL
+BOARD_RIL_CLASS := ../../../device/lge/fx1sk/Addon/ril/
 
 # Overlay
+TARGET_USES_ION := true
+TARGET_USES_OVERLAY := true
+TARGET_USES_SF_BYPASS := true
+TARGET_USES_C2D_COMPOSITION := true
 DEVICE_PACKAGE_OVERLAYS += device/lge/fx1sk/Addon/overlay
-TARGET_SPECIFIC_HEADER_PATH := device/lge/fx1sk/Addon/include
+
+# Wi-Fi
+BOARD_WPA_SUPPLICANT_DRIVER := NL80211
+BOARD_HOSTAPD_DRIVER := NL80211
+WPA_SUPPLICANT_VERSION := VER_0_8_X
+BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_bcmdhd
+BOARD_HOSTAPD_PRIVATE_LIB   := lib_driver_cmd_bcmdhd
+BOARD_WLAN_DEVICE           := bcmdhd
+WIFI_DRIVER_FW_PATH_PARAM   := "/sys/module/bcmdhd/parameters/firmware_path"
+WIFI_DRIVER_FW_PATH_PARAM        := "/sys/module/bcmdhd/parameters/firmware_path"
+WIFI_DRIVER_FW_PATH_STA          := "/system/etc/firmware/fw_bcmdhd.bin"
+WIFI_DRIVER_FW_PATH_AP           := "/system/etc/firmware/fw_bcmdhd_apsta.bin"
+
+# Sound
+BOARD_USES_LEGACY_ALSA_AUDIO :=true
+BOARD_USES_ALSA_AUDIO:= true
+BOARD_USES_FLUENCE_INCALL := true
+BOARD_USES_SEPERATED_AUDIO_INPUT := true
+
+# Recovery
+TARGET_RECOVERY_FSTAB = device/lge/fx1sk/Addon/recovery.fstab
+TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
+#BOARD_USE_CUSTOM_RECOVERY_FONT:= \"roboto_23x41.h\"
+#NABLE_LOKI_RECOVERY := true
+#ENABLE_LOKI := true
+BOARD_RECOVERY_SWIPE := true
+#TARGET_RELEASETOOLS_EXTENSIONS := device/lge/fx1sk/Addon/loki
+BOARD_CUSTOM_GRAPHICS := ../../../device/lge/fx1sk/Addon/recovery/graphics.c
+
+# OTA
+TARGET_OTA_ASSERT_DEVICE := fx1sk
+
+# Charger
+COMMON_GLOBAL_CFLAGS += -DBOARD_CHARGING_CMDLINE_NAME='"androidboot.mode"' -DBOARD_CHARGING_CMDLINE_VALUE='"chargerlogo"'
+BOARD_CHARGER_ENABLE_SUSPEND := true
+BOARD_HAVE_LOW_LATENCY_AUDIO := true
+
+# Camera
+USE_DEVICE_SPECIFIC_CAMERA := true
+COMMON_GLOBAL_CFLAGS += -DLG_CAMERA_HARDWARE
+
+# Other
+BOARD_USES_SECURE_SERVICES := true
+BOARD_USES_EXTRA_THERMAL_SENSOR := true
+TARGET_NO_RPC := true
+BOARD_HAS_NO_SELECT_BUTTON := true
+
+# Webkit
+ENABLE_WEBGL := true
+TARGET_FORCE_CPU_UPLOAD := true
+WEBCORE_INPAGE_VIDEO := true
+
+# Init
+TARGET_PROVIDES_INIT_RC := true
+
+# PMEM compatibility
+# linux/android_pmem.h: No such file or directory
+#BOARD_NEEDS_MEMORYHEAPPMEM := true
+
+# Preload bootanimation
+TARGET_BOOTANIMATION_PRELOAD := true
