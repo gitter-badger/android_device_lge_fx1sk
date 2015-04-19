@@ -9,4 +9,4 @@
 - [ ] Qualcomm display-caf library 에러 Fix
 - [ ] Qualcomm audio-caf library 에러 Fix
 - [ ] Qualcomm media-caf library 에러 Fix
-- [ ] alsa_mixer library 에러 Fix
+  - [ ] alsa_mixer library 에러 Fix
