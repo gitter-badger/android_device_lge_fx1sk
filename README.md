@@ -6,6 +6,7 @@
 
 #### 다음 목표
 
-make: *** No rule to make target '/home/cloud9350/android/cm/out/target/product/fx1sk/obj/SHARED_LIBRARIES/libqdutils_intermediates/export_includes', needed by '/home/cloud9350/android/cm/out/target/product/fx1sk/obj/SHARED_LIBRARIES/libsurfaceflinger_intermediates/import_includes'.  멈춤.
-
-- [ ] 이놈의 Qualcomm display-caf library 에러 Fix
+- [ ] Qualcomm display-caf library 에러 Fix
+- [ ] Qualcomm audio-caf library 에러 Fix
+- [ ] Qualcomm media-caf library 에러 Fix
+  - [ ] alsa_mixer library 에러 Fix
