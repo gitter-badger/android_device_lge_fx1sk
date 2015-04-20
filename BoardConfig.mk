@@ -49,7 +49,10 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 
 TARGET_KERNEL_CONFIG := fx1sk-perf_defconfig
 TARGET_KERNEL_SOURCE := kernel/lge/fx1sk
+#TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.7
+#TARGET_KERNEL_CUSTOM_TOOLCHAIN_SUFFIX := arm-cortex_a8-linux-gnueabi-
 #TARGET_PREBUILT_KERNEL := device/lge/fx1sk
+#LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
 
 TARGET_NO_RADIOIMAGE := true
 
@@ -109,8 +112,8 @@ WIFI_DRIVER_FW_PATH_AP           := "/system/etc/firmware/fw_bcmdhd_apsta.bin"
 #ALSA AUDIO is not working
 #BOARD_USES_LEGACY_ALSA_AUDIO :=true
 #BOARD_USES_ALSA_AUDIO:= true
-BOARD_USES_FLUENCE_INCALL := true
-BOARD_USES_SEPERATED_AUDIO_INPUT := true
+#BOARD_USES_FLUENCE_INCALL := true
+#BOARD_USES_SEPERATED_AUDIO_INPUT := true
 
 # Recovery (Not build)
 TARGET_RECOVERY_FSTAB = device/lge/fx1sk/Addon/recovery.fstab

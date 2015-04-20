@@ -1,5 +1,3 @@
-lib/libsurfacefliger.so
-lib/libqdutils.so
 lib/libacdbloader.so
 lib/libuicc.so
 lib/libadsprpc.so
@@ -151,4 +149,3 @@ etc/init.grand-common.modem_links.sh
 etc/thermald-8960.conf
 etc/vold.fstab
 usr/keylayout/keypad_8960.kl
-
