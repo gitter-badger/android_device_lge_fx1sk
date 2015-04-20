@@ -14,3 +14,4 @@
 - [x] Qualcomm media-caf library 에러 Fix
   - [x] alsa_mixer library 에러 Fix
 - [ ] Kernel 빌드 오류 Fix
+  - [ ] audio_defs.h: No such file or directory
