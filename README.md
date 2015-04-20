@@ -13,3 +13,4 @@
 - [x] Qualcomm audio-caf library 에러 Fix
 - [x] Qualcomm media-caf library 에러 Fix
   - [x] alsa_mixer library 에러 Fix
+- [ ] Kernel 빌드 오류 Fix
