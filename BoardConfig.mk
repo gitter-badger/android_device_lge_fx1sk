@@ -87,7 +87,7 @@ BOARD_HARDWARE_CLASS := device/lge/fx1sk/Addon/cmhw/
 TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
 
 # RIL
-BOARD_RIL_CLASS := ../../../device/lge/fx1sk/Addon/ril/
+#BOARD_RIL_CLASS := ../../../device/lge/fx1sk/Addon/ril/
 
 # Overlay
 TARGET_USES_ION := true
