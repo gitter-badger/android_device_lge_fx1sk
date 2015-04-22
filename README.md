@@ -5,18 +5,23 @@
 
 #### 진행중
 - [x] 빌드 가능
-  - [ ] Build Hack 비활성화 하기
 - [ ] 부팅 가능
 
 #### 다음 목표
 
 - [x] Qualcomm display-caf library 에러 Fix
+  - [x] 주석처리 헤제
 - [x] Qualcomm audio-caf library 에러 Fix
+  - [x] 주석처리 헤제
 - [x] Qualcomm media-caf library 에러 Fix
   - [x] alsa_mixer library 에러 Fix
+  - [x] 주석처리 헤제
 - [x] Kernel 빌드 오류 Fix [Build Hack]
   - [x] audio_defs.h: No such file or directory [Build Hack]
 - [ ] Build Hack 으로 빌드해야만 하는 문제점 Fix
+- [ ] init.rc 파일이 생성되지 않는 문제 Fix
+- [ ] init.recovery.*.rc 파일이 생성되지 않는 문제 Fix
+- [ ] 여전히 커널 빌드에 문제가 있는 것을 Fix
 
 #### LTE 관련 로그오류
 ```
