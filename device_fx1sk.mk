@@ -69,8 +69,6 @@ PRODUCT_PACKAGES += \
         ffmpeg \
         naver-fonts \
 	brcm_patchram_plus \
-	loki.sh \
-	loki_tool_static_gproj \
 	recovery-transform.sh
 
 PRODUCT_COPY_FILES += \
@@ -94,7 +92,6 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/Addon/audio_effects.conf:system/vendor/etc/audio_effects.conf \
 	$(LOCAL_PATH)/Addon/fetch-swv:system/bin/fetch-swv \
 	$(LOCAL_PATH)/Addon/mixer_paths.xml:system/etc/mixer_paths.xml \
-	$(LOCAL_PATH)/Addon/thermald.conf:system/etc/thermald.conf \
 	$(LOCAL_PATH)/Addon/init.fx1sk.rc:root/init.fx1sk.rc \
 	$(LOCAL_PATH)/Addon/recovery.fstab:root/recovery.fstab \
 	$(LOCAL_PATH)/Addon/ueventd.fx1sk.rc:root/ueventd.fx1sk.rc \

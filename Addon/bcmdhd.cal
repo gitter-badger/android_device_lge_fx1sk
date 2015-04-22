@@ -6,6 +6,7 @@ devid=0x4380
 boardtype=0x05de
 boardrev=0x1205
 boardnum=22
+# Ramdom 필요
 macaddr=00:90:4c:c5:12:38
 sromrev=3
 boardflags=0x10081a01

@@ -117,13 +117,6 @@ BOARD_USES_SEPERATED_AUDIO_INPUT := true
 
 # Recovery (Not build)
 TARGET_RECOVERY_FSTAB = device/lge/fx1sk/Addon/recovery.fstab
-#TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
-#BOARD_USE_CUSTOM_RECOVERY_FONT:= \"roboto_23x41.h\"
-#NABLE_LOKI_RECOVERY := true
-#ENABLE_LOKI := true
-#BOARD_RECOVERY_SWIPE := true
-#TARGET_RELEASETOOLS_EXTENSIONS := device/lge/fx1sk/Addon/loki
-#BOARD_CUSTOM_GRAPHICS := ../../../device/lge/fx1sk/Addon/recovery/graphics.c
 
 # OTA
 TARGET_OTA_ASSERT_DEVICE := fx1sk

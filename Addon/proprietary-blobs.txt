@@ -115,7 +115,6 @@ bin/qseecomd
 bin/radish
 bin/sensors.qcom
 bin/qmuxd
-bin/thermald
 bin/cnd
 bin/rmt_storage
 bin/rild
@@ -146,6 +145,5 @@ etc/firmware/fw_bcmdhd.bin
 etc/firmware/fw_bcmdhd_apsta.bin
 etc/firmware/fw_bcmdhd_mfg.bin
 etc/init.grand-common.modem_links.sh
-etc/thermald-8960.conf
 etc/vold.fstab
 usr/keylayout/keypad_8960.kl
