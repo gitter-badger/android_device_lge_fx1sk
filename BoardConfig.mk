@@ -52,9 +52,6 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 #TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.7
 #TARGET_KERNEL_CUSTOM_TOOLCHAIN_SUFFIX := arm-cortex_a8-linux-gnueabi-
 TARGET_PREBUILT_KERNEL := device/lge/fx1sk
-LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
-
-TARGET_NO_RADIOIMAGE := true
 
 # Display
 BOARD_EGL_CFG := device/lge/fx1sk/Addon/egl.cfg
@@ -109,7 +106,6 @@ WIFI_DRIVER_FW_PATH_STA          := "/system/etc/firmware/fw_bcmdhd.bin"
 WIFI_DRIVER_FW_PATH_AP           := "/system/etc/firmware/fw_bcmdhd_apsta.bin"
 
 # Sound
-#ALSA AUDIO is not working
 BOARD_USES_LEGACY_ALSA_AUDIO :=true
 BOARD_USES_ALSA_AUDIO:= true
 BOARD_USES_FLUENCE_INCALL := true
@@ -144,11 +140,10 @@ WEBCORE_INPAGE_VIDEO := true
 #TARGET_PROVIDES_INIT_RC := true
 
 # PMEM compatibility
-# linux/android_pmem.h: No such file or directory
 BOARD_NEEDS_MEMORYHEAPPMEM := true
 
 # Preload bootanimation
 TARGET_BOOTANIMATION_PRELOAD := true
 
-# I no have adreno sources...
+# Adreno Source
 HAVE_ADRENO_SOURCE:= false
