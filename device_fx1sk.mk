@@ -95,7 +95,6 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/Addon/init.fx1sk.rc:root/init.fx1sk.rc \
 	$(LOCAL_PATH)/Addon/recovery.fstab:root/recovery.fstab \
 	$(LOCAL_PATH)/Addon/ueventd.fx1sk.rc:root/ueventd.fx1sk.rc \
-	$(LOCAL_PATH)/Addon/recovery/postrecoveryboot.sh:recovery/root/sbin/postrecoveryboot.sh \
 	$(LOCAL_PATH)/Addon/keypad_8064.kl:system/usr/keylayout/gk-keypad-8064.kl \
 	$(LOCAL_PATH)/Addon/bcmdhd.cal:system/etc/wifi/bcmdhd.cal \
 	$(LOCAL_PATH)/Addon/gps.conf:system/etc/gps.conf \
