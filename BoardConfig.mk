@@ -80,10 +80,10 @@ BOARD_BLUEDROID_VENDOR_CONF := device/lge/fx1sk/Addon/bluetooth/vnd_fx1sk.txt
 BOARD_USES_QCOM_HARDWARE := true
 TARGET_USES_QCOM_BSP := true
 BOARD_USES_QCOM_LIBS := true
-#TARGET_QCOM_DISPLAY_VARIANT := caf
-#TARGET_QCOM_MEDIA_VARIANT := caf
+TARGET_QCOM_DISPLAY_VARIANT := caf
+TARGET_QCOM_MEDIA_VARIANT := caf
 BOARD_HARDWARE_CLASS := device/lge/fx1sk/Addon/cmhw/
-#TARGET_QCOM_AUDIO_VARIANT := caf
+TARGET_QCOM_AUDIO_VARIANT := caf
 TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
 
 # RIL
@@ -110,10 +110,10 @@ WIFI_DRIVER_FW_PATH_AP           := "/system/etc/firmware/fw_bcmdhd_apsta.bin"
 
 # Sound
 #ALSA AUDIO is not working
-#BOARD_USES_LEGACY_ALSA_AUDIO :=true
-#BOARD_USES_ALSA_AUDIO:= true
-#BOARD_USES_FLUENCE_INCALL := true
-#BOARD_USES_SEPERATED_AUDIO_INPUT := true
+BOARD_USES_LEGACY_ALSA_AUDIO :=true
+BOARD_USES_ALSA_AUDIO:= true
+BOARD_USES_FLUENCE_INCALL := true
+BOARD_USES_SEPERATED_AUDIO_INPUT := true
 
 # Recovery (Not build)
 TARGET_RECOVERY_FSTAB = device/lge/fx1sk/Addon/recovery.fstab
@@ -148,7 +148,7 @@ TARGET_FORCE_CPU_UPLOAD := true
 WEBCORE_INPAGE_VIDEO := true
 
 # Init
-TARGET_PROVIDES_INIT_RC := true
+#TARGET_PROVIDES_INIT_RC := true
 
 # PMEM compatibility
 # linux/android_pmem.h: No such file or directory
