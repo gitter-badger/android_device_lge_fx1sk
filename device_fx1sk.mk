@@ -96,7 +96,6 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/Addon/keypad_8064.kl:system/usr/keylayout/gk-keypad-8064.kl \
 	$(LOCAL_PATH)/Addon/bcmdhd.cal:system/etc/wifi/bcmdhd.cal \
 	$(LOCAL_PATH)/Addon/gps.conf:system/etc/gps.conf \
-	$(LOCAL_PATH)/Addon/initlogo.rle:root/logo.rle \
 	$(LOCAL_PATH)/Addon/initlogo.rle:root/initlogo.rle \
         $(NFCEE_ACCESS_PATH):system/etc/nfcee_access.xml \
 	frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
