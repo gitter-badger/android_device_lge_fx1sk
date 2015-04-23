@@ -73,8 +73,6 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_COPY_FILES += \
         $(LOCAL_KERNEL):kernel \
-        $(LOCAL_PATH)/Addon/nfc.default.so:system/lib/hw/nfc.default.so \
-        $(LOCAL_PATH)/Addon/camera.vendor.msm8960.so:system/lib/hw/camera.vendor.msm8960.so \
         $(LOCAL_PATH)/Addon/BCM4334B0_002.001.013.0271.0333.hcd:/system/vendor/firmware/BCM4334B0_002.001.013.0271.0333.hcd \
         $(LOCAL_PATH)/Addon/init.fx1sk-common.rc:root/init.fx1sk-common.rc \
         $(LOCAL_PATH)/Addon/init.fx1sk.usb.rc:root/init.fx1sk.usb.rc \

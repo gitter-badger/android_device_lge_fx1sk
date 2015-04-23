@@ -19,9 +19,10 @@
 - [x] Kernel 빌드 오류 Fix [Build Hack]
   - [x] audio_defs.h: No such file or directory [Build Hack]
 - [ ] Build Hack 으로 빌드해야만 하는 문제점 Fix
-- [ ] init.rc 파일이 생성되지 않는 문제 Fix
+- [x] init.rc 파일이 생성되지 않는 문제 Fix
 - [ ] init.recovery.*.rc 파일이 생성되지 않는 문제 Fix
 - [ ] 여전히 커널 빌드에 문제가 있는 것을 Fix
+- [ ] Philz Recovery 와 같이 빌드
 
 #### LTE 관련 로그오류
 ```

@@ -47,11 +47,11 @@ BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_PERSISTIMAGE_PARTITION_SIZE := 5127433
 BOARD_FLASH_BLOCK_SIZE := 131072
 
-#TARGET_KERNEL_CONFIG := fx1sk-perf_defconfig
-#TARGET_KERNEL_SOURCE := kernel/lge/fx1sk
+TARGET_KERNEL_CONFIG := fx1sk-perf_defconfig
+TARGET_KERNEL_SOURCE := kernel/lge/fx1sk
 #TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.7
 #TARGET_KERNEL_CUSTOM_TOOLCHAIN_SUFFIX := arm-cortex_a8-linux-gnueabi-
-TARGET_PREBUILT_KERNEL := device/lge/fx1sk
+#TARGET_PREBUILT_KERNEL := device/lge/fx1sk
 
 # Display
 BOARD_EGL_CFG := device/lge/fx1sk/Addon/egl.cfg
@@ -140,10 +140,13 @@ WEBCORE_INPAGE_VIDEO := true
 #TARGET_PROVIDES_INIT_RC := true
 
 # PMEM compatibility
-#BOARD_NEEDS_MEMORYHEAPPMEM := true
+BOARD_NEEDS_MEMORYHEAPPMEM := true
 
 # Preload bootanimation
 TARGET_BOOTANIMATION_PRELOAD := true
 
 # Adreno Source
 HAVE_ADRENO_SOURCE:= false
+
+# Philz Recovery
+RECOVERY_VARIANT := philz
