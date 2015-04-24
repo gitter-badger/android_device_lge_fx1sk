@@ -73,30 +73,35 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_COPY_FILES += \
         $(LOCAL_KERNEL):kernel \
-        $(LOCAL_PATH)/Addon/BCM4334B0_002.001.013.0271.0333.hcd:/system/vendor/firmware/BCM4334B0_002.001.013.0271.0333.hcd \
+        $(LOCAL_PATH)/Addon/vendor/firmware/BCM4334B0_002.001.013.0271.0333.hcd:/system/vendor/firmware/BCM4334B0_002.001.013.0271.0333.hcd \
         $(LOCAL_PATH)/Addon/init.fx1sk-common.rc:root/init.fx1sk-common.rc \
         $(LOCAL_PATH)/Addon/init.fx1sk.usb.rc:root/init.fx1sk.usb.rc \
-	$(LOCAL_PATH)/Addon/audio_policy.conf:system/etc/audio_policy.conf \
-	$(LOCAL_PATH)/Addon/qosmgr_rules.xml:system/etc/qosmgr_rules.xml \
-	$(LOCAL_PATH)/Addon/media_profiles.xml:system/etc/media_profiles.xml \
-	$(LOCAL_PATH)/Addon/media_codecs.xml:system/etc/media_codecs.xml \
+	$(LOCAL_PATH)/Addon/etc/audio_policy.conf:system/etc/audio_policy.conf \
+	$(LOCAL_PATH)/Addon/etc/qosmgr_rules.xml:system/etc/qosmgr_rules.xml \
+	$(LOCAL_PATH)/Addon/etc/media_profiles.xml:system/etc/media_profiles.xml \
+	$(LOCAL_PATH)/Addon/etc/media_codecs.xml:system/etc/media_codecs.xml \
         $(LOCAL_PATH)/Addon/kickstart_checker.sh:system/etc/kickstart_checker.sh \
-	$(LOCAL_PATH)/Addon/hs_detect.kl:system/usr/keylayout/hs_detect.kl \
-	$(LOCAL_PATH)/Addon/pmic8xxx_pwrkey.kl:system/usr/keylayout/pmic8xxx_pwrkey.kl \
-	$(LOCAL_PATH)/Addon/hs_detect.kcm:system/usr/keychars/hs_detect.kcm \
-	$(LOCAL_PATH)/Addon/pmic8xxx_pwrkey.kcm:system/usr/keychars/pmic8xxx_pwrkey.kcm \
-	$(LOCAL_PATH)/Addon/touch_dev.idc:system/usr/idc/touch_dev.idc \
-	$(LOCAL_PATH)/Addon/touch_dev.kl:system/usr/keylayout/touch_dev.kl \
-	$(LOCAL_PATH)/Addon/audio_effects.conf:system/vendor/etc/audio_effects.conf \
-	$(LOCAL_PATH)/Addon/fetch-swv:system/bin/fetch-swv \
-	$(LOCAL_PATH)/Addon/mixer_paths.xml:system/etc/mixer_paths.xml \
+	$(LOCAL_PATH)/Addon/usr/keylayout/hs_detect.kl:system/usr/keylayout/hs_detect.kl \
+	$(LOCAL_PATH)/Addon/usr/keylayout/pmic8xxx_pwrkey.kl:system/usr/keylayout/pmic8xxx_pwrkey.kl \
+	$(LOCAL_PATH)/Addon/usr/keychars/hs_detect.kcm:system/usr/keychars/hs_detect.kcm \
+	$(LOCAL_PATH)/Addon/usr/keychars/pmic8xxx_pwrkey.kcm:system/usr/keychars/pmic8xxx_pwrkey.kcm \
+	$(LOCAL_PATH)/Addon/usr/idc/touch_dev.idc:system/usr/idc/touch_dev.idc \
+	$(LOCAL_PATH)/Addon/usr/keylayout/touch_dev.kl:system/usr/keylayout/touch_dev.kl \
+	$(LOCAL_PATH)/Addon/etc/audio_effects.conf:system/vendor/etc/audio_effects.conf \
+	$(LOCAL_PATH)/Addon/bin/fetch-swv:system/bin/fetch-swv \
+	$(LOCAL_PATH)/Addon/etc/mixer_paths.xml:system/etc/mixer_paths.xml \
 	$(LOCAL_PATH)/Addon/init.fx1sk.rc:root/init.fx1sk.rc \
 	$(LOCAL_PATH)/Addon/recovery.fstab:root/recovery.fstab \
-	$(LOCAL_PATH)/Addon/ueventd.fx1sk.rc:root/ueventd.fx1sk.rc \
-	$(LOCAL_PATH)/Addon/keypad_8064.kl:system/usr/keylayout/gk-keypad-8064.kl \
-	$(LOCAL_PATH)/Addon/bcmdhd.cal:system/etc/wifi/bcmdhd.cal \
-	$(LOCAL_PATH)/Addon/gps.conf:system/etc/gps.conf \
-	$(LOCAL_PATH)/Addon/initlogo.rle:root/initlogo.rle \
+	$(LOCAL_PATH)/Addon/root/ueventd.fx1sk.rc:root/ueventd.fx1sk.rc \
+	$(LOCAL_PATH)/Addon/usr/keylayout/keypad_8064.kl:system/usr/keylayout/gk-keypad-8064.kl \
+	$(LOCAL_PATH)/Addon/etc/bcmdhd.cal:system/etc/wifi/bcmdhd.cal \
+	$(LOCAL_PATH)/Addon/etc/gps.conf:system/etc/gps.conf \
+	$(LOCAL_PATH)/Addon/root/initlogo.rle:root/initlogo.rle \
+	$(LOCAL_PATH)/Addon/etc/bluetooth/bdroid_buildcfg.h:system/etc/bluetooth/bdroid_buildcfg.h \
+	$(LOCAL_PATH)/Addon/etc/bluetooth/vnd_fx1sk.txt:system/etc/bluetooth/vnd_fx1sk.txt \
+	$(LOCAL_PATH)/Addon/etc/nfcee_access.xml:system/etc/nfcee_access.xml \
+	$(LOCAL_PATH)/Addon/etc/nfcee_access_debug.xml:system/etc/nfcee_access_debug.xml \
+	$(LOCAL_PATH)/Addon/etc/libnfc-brcm.conf:system/etc/libnfc-brcm.conf \
         $(NFCEE_ACCESS_PATH):system/etc/nfcee_access.xml \
 	frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
 	frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
