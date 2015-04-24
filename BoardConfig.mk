@@ -51,7 +51,7 @@ TARGET_KERNEL_CONFIG := fx1sk-perf_defconfig
 TARGET_KERNEL_SOURCE := kernel/lge/fx1sk
 TARGET_KERNEL_CUSTOM_TOOLCHAIN := libaro-4.9
 TARGET_KERNEL_CUSTOM_TOOLCHAIN_SUFFIX := arm-cortex_a8-linux-gnueabi-
-#TARGET_PREBUILT_KERNEL := device/lge/fx1sk
+#TARGET_PREBUILT_KERNEL := device/lge/fx1sk/kernel
 
 # Display
 BOARD_EGL_CFG := device/lge/fx1sk/Addon/egl.cfg
@@ -162,5 +162,6 @@ TW_NO_REBOOT_BOOTLOADER := true
 TW_NO_USB_STORAGE := true
 TW_DEFAULT_EXTERNAL_STORAGE := true
 TW_FLASH_FROM_STORAGE := false
-TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
+TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 TARGET_PREBUILT_RECOVERY_KERNEL := device/lge/fx1sk/kernel
+#BOARD_CUSTOM_GRAPHICS := ../../../device/lge/fx1sk/Addon/recovery/graphics.c
