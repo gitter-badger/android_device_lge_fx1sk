@@ -37,6 +37,13 @@ BOARD_KERNEL_BASE := 0x80200000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000 --tags_offset 0x00000100 --kernel_offset 0x00008000
 
+TARGET_KERNEL_CONFIG := fx1sk-perf_defconfig
+TARGET_KERNEL_SOURCE := kernel/lge/fx1sk
+TARGET_KERNEL_CUSTOM_TOOLCHAIN := libaro-4.9
+TARGET_KERNEL_CUSTOM_TOOLCHAIN_SUFFIX := arm-cortex_a8-linux-gnueabi-
+TARGET_PREBUILT_KERNEL := device/lge/fx1sk/kernel
+
+# Partition
 TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_BOOTIMAGE_PARTITION_SIZE := 12582912
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 12582912
@@ -47,16 +54,13 @@ BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_PERSISTIMAGE_PARTITION_SIZE := 5127433
 BOARD_FLASH_BLOCK_SIZE := 131072
 
-TARGET_KERNEL_CONFIG := fx1sk-perf_defconfig
-TARGET_KERNEL_SOURCE := kernel/lge/fx1sk
-TARGET_KERNEL_CUSTOM_TOOLCHAIN := libaro-4.9
-TARGET_KERNEL_CUSTOM_TOOLCHAIN_SUFFIX := arm-cortex_a8-linux-gnueabi-
-#TARGET_PREBUILT_KERNEL := device/lge/fx1sk/kernel
-
 # Display
 BOARD_EGL_CFG := device/lge/fx1sk/Addon/egl.cfg
 TARGET_DISPLAY_INSECURE_MM_HEAP := true
 USE_OPENGL_RENDERER := true
+TARGET_HAVE_BYPASS := true
+BOARD_ADRENO_DECIDE_TEXTURE_TARGET := true
+TARGET_USES_C2D_COMPOSITION := true
 
 # Enable dex-preoptimization to speed up first boot sequence
 ifeq ($(HOST_OS),linux)
@@ -71,17 +75,23 @@ WITH_DEXPREOPT_BOOT_IMG_ONLY ?= true
 # BlueTooth
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
-BOARD_BLUEDROID_VENDOR_CONF := device/lge/fx1sk/Addon/bluetooth/vnd_fx1sk.txt
+BOARD_BLUEDROID_VENDOR_CONF := device/lge/fx1sk/Addon/etc/bluetooth/vnd_fx1sk.txt
 
 # Qualcomm
 BOARD_USES_QCOM_HARDWARE := true
 TARGET_USES_QCOM_BSP := true
 BOARD_USES_QCOM_LIBS := true
+BOARD_USES_QCOM_LEGACY := true
 TARGET_QCOM_DISPLAY_VARIANT := caf
 TARGET_QCOM_MEDIA_VARIANT := caf
 BOARD_HARDWARE_CLASS := device/lge/fx1sk/Addon/cmhw/
 TARGET_QCOM_AUDIO_VARIANT := caf
 TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
+
+# GPS
+BOARD_USES_QCOM_GPS := true
+BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := default
+BOARD_VENDOR_QCOM_GPS_LOC_API_AMSS_VERSION := 1240
 
 # RIL
 #BOARD_RIL_CLASS := ../../../device/lge/fx1sk/Addon/ril/
@@ -90,8 +100,7 @@ TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
 TARGET_USES_ION := true
 TARGET_USES_OVERLAY := true
 TARGET_USES_SF_BYPASS := true
-TARGET_USES_C2D_COMPOSITION := false
-DEVICE_PACKAGE_OVERLAYS += device/lge/fx1sk/Addon/overlay
+DEVICE_PACKAGE_OVERLAYS := device/lge/fx1sk/Addon/overlay
 
 # Wi-Fi
 BOARD_WPA_SUPPLICANT_DRIVER := NL80211
@@ -106,10 +115,12 @@ WIFI_DRIVER_FW_PATH_STA          := "/system/etc/firmware/fw_bcmdhd.bin"
 WIFI_DRIVER_FW_PATH_AP           := "/system/etc/firmware/fw_bcmdhd_apsta.bin"
 
 # Sound
-BOARD_USES_LEGACY_ALSA_AUDIO :=true
+BOARD_USES_LEGACY_ALSA_AUDIO := true
 BOARD_USES_ALSA_AUDIO:= true
 BOARD_USES_FLUENCE_INCALL := true
 BOARD_USES_SEPERATED_AUDIO_INPUT := true
+BOARD_USES_AUDIO_LEGACY := true
+BOARD_HAVE_LOW_LATENCY_AUDIO := true
 
 # Recovery (Not build)
 TARGET_RECOVERY_FSTAB = device/lge/fx1sk/Addon/recovery.fstab
@@ -120,7 +131,6 @@ TARGET_OTA_ASSERT_DEVICE := fx1sk
 # Charger
 COMMON_GLOBAL_CFLAGS += -DBOARD_CHARGING_CMDLINE_NAME='"androidboot.mode"' -DBOARD_CHARGING_CMDLINE_VALUE='"chargerlogo"' -DLG_CAMERA_HARDWARE
 BOARD_CHARGER_ENABLE_SUSPEND := true
-BOARD_HAVE_LOW_LATENCY_AUDIO := true
 
 # Camera
 USE_DEVICE_SPECIFIC_CAMERA := true
@@ -148,6 +158,9 @@ TARGET_BOOTANIMATION_PRELOAD := true
 # Adreno Source
 HAVE_ADRENO_SOURCE:= false
 
+# Logging
+TARGET_USES_LOGD := true
+
 # TeamWin Recovery
 RECOVERY_VARIANT := twrp
 TARGET_RECOVERY_INITRC := device/lge/fx1sk/Addon/recovery/init.rc
@@ -164,4 +177,4 @@ TW_DEFAULT_EXTERNAL_STORAGE := true
 TW_FLASH_FROM_STORAGE := false
 TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 TARGET_PREBUILT_RECOVERY_KERNEL := device/lge/fx1sk/kernel
-#BOARD_CUSTOM_GRAPHICS := ../../../device/lge/fx1sk/Addon/recovery/graphics.c
+BOARD_CUSTOM_GRAPHICS := ../../../device/lge/fx1sk/Addon/recovery/graphics.c
