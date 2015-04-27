@@ -93,7 +93,7 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/Addon/init.fx1sk.rc:root/init.fx1sk.rc \
 	$(LOCAL_PATH)/Addon/recovery.fstab:root/recovery.fstab \
 	$(LOCAL_PATH)/Addon/root/ueventd.fx1sk.rc:root/ueventd.fx1sk.rc \
-	$(LOCAL_PATH)/Addon/usr/keylayout/keypad_8064.kl:system/usr/keylayout/gk-keypad-8064.kl \
+	$(LOCAL_PATH)/Addon/usr/keylayout/keypad_8960.kl:system/usr/keylayout/keypad-8960.kl \
 	$(LOCAL_PATH)/Addon/etc/bcmdhd.cal:system/etc/wifi/bcmdhd.cal \
 	$(LOCAL_PATH)/Addon/etc/gps.conf:system/etc/gps.conf \
 	$(LOCAL_PATH)/Addon/root/initlogo.rle:root/initlogo.rle \
