@@ -60,6 +60,13 @@ PRODUCT_PACKAGES += \
 	libc2dcolorconvert \
 	hdmid \
 	libgps.utils \
+	libgeofence \
+	libloc_adapter \
+	libloc_eng \
+	libloc_api_v02 \
+	libloc_ds_api \
+	libloc_core \
+	libizat_core \
 	gps.msm8960 \
 	hwaddrs \
         hci_qcomm_init \
@@ -69,13 +76,23 @@ PRODUCT_PACKAGES += \
         ffmpeg \
         naver-fonts \
 	brcm_patchram_plus \
-	recovery-transform.sh
+	recovery-transform.sh \
+	hostapd \
+	dhcpcd.con\
+	wpa_supplicant \
+	wpa_supplicant.conf \
+	keystore.msm8960 \
+	flp.msm8960 \
+	hostapd_default.conf \
+	wpa_supplicant_overlay.conf \
+	p2p_supplicatn_overlay.conf
 
 PRODUCT_COPY_FILES += \
         $(LOCAL_KERNEL):kernel \
         $(LOCAL_PATH)/Addon/vendor/firmware/BCM4334B0_002.001.013.0271.0333.hcd:/system/vendor/firmware/BCM4334B0_002.001.013.0271.0333.hcd \
-        $(LOCAL_PATH)/Addon/init.fx1sk-common.rc:root/init.fx1sk-common.rc \
-        $(LOCAL_PATH)/Addon/init.fx1sk.usb.rc:root/init.fx1sk.usb.rc \
+	$(LOCAL_PATH)/Addon/vendor/firmware/libpn554_fw.so:system/vendor/firmware/libpn554_fw.so \
+#        $(LOCAL_PATH)/Addon/init.fx1sk-common.rc:root/init.fx1sk-common.rc \
+#        $(LOCAL_PATH)/Addon/init.fx1sk.usb.rc:root/init.fx1sk.usb.rc \
 	$(LOCAL_PATH)/Addon/etc/audio_policy.conf:system/etc/audio_policy.conf \
 	$(LOCAL_PATH)/Addon/etc/qosmgr_rules.xml:system/etc/qosmgr_rules.xml \
 	$(LOCAL_PATH)/Addon/etc/media_profiles.xml:system/etc/media_profiles.xml \
@@ -90,13 +107,13 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/Addon/etc/audio_effects.conf:system/vendor/etc/audio_effects.conf \
 	$(LOCAL_PATH)/Addon/bin/fetch-swv:system/bin/fetch-swv \
 	$(LOCAL_PATH)/Addon/etc/mixer_paths.xml:system/etc/mixer_paths.xml \
-	$(LOCAL_PATH)/Addon/init.fx1sk.rc:root/init.fx1sk.rc \
+#	$(LOCAL_PATH)/Addon/init.fx1sk.rc:root/init.fx1sk.rc \
 	$(LOCAL_PATH)/Addon/recovery.fstab:root/recovery.fstab \
-	$(LOCAL_PATH)/Addon/root/ueventd.fx1sk.rc:root/ueventd.fx1sk.rc \
+#	$(LOCAL_PATH)/Addon/root/ueventd.fx1sk.rc:root/ueventd.fx1sk.rc \
 	$(LOCAL_PATH)/Addon/usr/keylayout/keypad_8960.kl:system/usr/keylayout/keypad-8960.kl \
 	$(LOCAL_PATH)/Addon/etc/bcmdhd.cal:system/etc/wifi/bcmdhd.cal \
 	$(LOCAL_PATH)/Addon/etc/gps.conf:system/etc/gps.conf \
-	$(LOCAL_PATH)/Addon/root/initlogo.rle:root/initlogo.rle \
+#	$(LOCAL_PATH)/Addon/root/initlogo.rle:root/initlogo.rle \
 	$(LOCAL_PATH)/Addon/etc/bluetooth/bdroid_buildcfg.h:system/etc/bluetooth/bdroid_buildcfg.h \
 	$(LOCAL_PATH)/Addon/etc/bluetooth/vnd_fx1sk.txt:system/etc/bluetooth/vnd_fx1sk.txt \
 	$(LOCAL_PATH)/Addon/etc/nfcee_access.xml:system/etc/nfcee_access.xml \

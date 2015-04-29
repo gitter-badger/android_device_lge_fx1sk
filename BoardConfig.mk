@@ -39,7 +39,7 @@ BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000 --tags_offset 0x00000100 --k
 
 TARGET_KERNEL_CONFIG := fx1sk-perf_defconfig
 TARGET_KERNEL_SOURCE := kernel/lge/fx1sk
-TARGET_KERNEL_CUSTOM_TOOLCHAIN := libaro-4.9
+TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-linux-androideabi-4.8
 TARGET_KERNEL_CUSTOM_TOOLCHAIN_SUFFIX := arm-cortex_a8-linux-gnueabi-
 TARGET_PREBUILT_KERNEL := device/lge/fx1sk/kernel
 
@@ -122,9 +122,6 @@ BOARD_USES_SEPERATED_AUDIO_INPUT := true
 BOARD_USES_AUDIO_LEGACY := true
 BOARD_HAVE_LOW_LATENCY_AUDIO := true
 
-# Recovery (Not build)
-TARGET_RECOVERY_FSTAB = device/lge/fx1sk/Addon/recovery.fstab
-
 # OTA
 TARGET_OTA_ASSERT_DEVICE := fx1sk
 
@@ -162,6 +159,7 @@ HAVE_ADRENO_SOURCE:= false
 TARGET_USES_LOGD := true
 
 # TeamWin Recovery
+TARGET_RECOVERY_FSTAB = device/lge/fx1sk/Addon/recovery.fstab
 RECOVERY_VARIANT := twrp
 TARGET_RECOVERY_INITRC := device/lge/fx1sk/Addon/recovery/init.rc
 DEVICE_RESOLUTION := 720x1280
@@ -177,4 +175,3 @@ TW_DEFAULT_EXTERNAL_STORAGE := true
 TW_FLASH_FROM_STORAGE := false
 TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 TARGET_PREBUILT_RECOVERY_KERNEL := device/lge/fx1sk/kernel
-BOARD_CUSTOM_GRAPHICS := ../../../device/lge/fx1sk/Addon/recovery/graphics.c
