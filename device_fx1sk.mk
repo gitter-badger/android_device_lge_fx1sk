@@ -85,7 +85,8 @@ PRODUCT_PACKAGES += \
 	flp.msm8960 \
 	hostapd_default.conf \
 	wpa_supplicant_overlay.conf \
-	p2p_supplicatn_overlay.conf
+	p2p_supplicatn_overlay.conf \
+	healthd
 
 PRODUCT_COPY_FILES += \
         $(LOCAL_KERNEL):kernel \

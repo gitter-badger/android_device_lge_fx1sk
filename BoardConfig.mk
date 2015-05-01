@@ -39,8 +39,8 @@ BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000 --tags_offset 0x00000100 --k
 
 TARGET_KERNEL_CONFIG := fx1sk-perf_defconfig
 TARGET_KERNEL_SOURCE := kernel/lge/fx1sk
-TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-linux-androideabi-4.8
-TARGET_KERNEL_CUSTOM_TOOLCHAIN_SUFFIX := arm-cortex_a8-linux-gnueabi-
+TARGET_KERNEL_CUSTOM_TOOLCHAIN := libaro-4.7
+TARGET_KERNEL_CUSTOM_TOOLCHAIN_SUFFIX := arm-eabi-
 TARGET_PREBUILT_KERNEL := device/lge/fx1sk/kernel
 
 # Partition
