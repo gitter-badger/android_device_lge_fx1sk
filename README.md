@@ -14,4 +14,3 @@
 - [ ] 리커버리 빌드 오류 Fix
   - [ ] init.recovery.*.rc 파일이 없는 것을 Fix
   - [ ] Philz -> TWRP
-- [ ] Android 5.1 -> Android 5.1.1 로 업그레이드 됨에 따라 overlay Fix
