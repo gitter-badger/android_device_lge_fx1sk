@@ -29,7 +29,7 @@ TARGET_KRAIT_BIONIC_PLDSIZE := 64
 
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := fx1sk
-TARGET_BOOTLOADER_NAME=fx1sk
+TARGET_BOOTLOADER_NAME := fx1sk
 
 # Kernel
 BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=fx1sk user_debug=31 msm_rtb.filter=0x3F ehci-hcd.park=3 maxcpus=2 lpj=67741
