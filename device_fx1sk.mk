@@ -91,7 +91,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
         $(LOCAL_KERNEL):kernel \
         $(LOCAL_PATH)/Addon/vendor/firmware/BCM4334B0_002.001.013.0271.0333.hcd:/system/vendor/firmware/BCM4334B0_002.001.013.0271.0333.hcd \
-	$(LOCAL_PATH)/Addon/vendor/firmware/libpn554_fw.so:system/vendor/firmware/libpn554_fw.so \
+	$(LOCAL_PATH)/Addon/vendor/firmware/libpn544_fw.so:system/vendor/firmware/libpn544_fw.so \
 #        $(LOCAL_PATH)/Addon/init.fx1sk-common.rc:root/init.fx1sk-common.rc \
 #        $(LOCAL_PATH)/Addon/init.fx1sk.usb.rc:root/init.fx1sk.usb.rc \
 	$(LOCAL_PATH)/Addon/etc/audio_policy.conf:system/etc/audio_policy.conf \
