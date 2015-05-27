@@ -39,8 +39,6 @@ BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000 --tags_offset 0x00000100 --k
 
 TARGET_KERNEL_CONFIG := fx1sk-perf_defconfig
 TARGET_KERNEL_SOURCE := kernel/lge/fx1sk
-#TARGET_KERNEL_CUSTOM_TOOLCHAIN := libaro-4.7
-#TARGET_KERNEL_CUSTOM_TOOLCHAIN_SUFFIX := prebuilts/gcc/linux-x86/arm/libaro-4.7/bin/arm-eabi-
 KERNEL_TOOLCHAIN_PREFIX:= /home/cloud9350/android/cm/prebuilts/gcc/linux-x86/arm/libaro-4.7/bin/arm-eabi-
 TARGET_PREBUILT_KERNEL := device/lge/fx1sk/kernel
 
@@ -145,7 +143,7 @@ TARGET_FORCE_CPU_UPLOAD := true
 WEBCORE_INPAGE_VIDEO := true
 
 # Init
-#TARGET_PROVIDES_INIT_RC := true
+TARGET_PROVIDES_INIT_RC := true
 
 # PMEM compatibility
 BOARD_NEEDS_MEMORYHEAPPMEM := true
