@@ -1,0 +1,10 @@
+[
+  {
+    "repository": "android_device_lge_fx1sk",
+    "target_path": "device/lge/fx1sk"
+  }
+  {
+    "repository": "proprietary_vendor_lge_fx1sk",
+    "target_path": "vendor/lge/fx1sk"
+  }
+]
