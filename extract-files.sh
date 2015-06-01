@@ -11,7 +11,7 @@ for FILE in `cat Addon/proprietary-blobs.txt | grep -v ^# | grep -v ^$ `; do
     if [ ! -d $BASE/$DIR ]; then
         mkdir -p $BASE/$DIR
     fi
-    cp /home/cloud9350/android/cm/firmware/$FILE $BASE/$FILE
+    cp ../../../firmware/$FILE $BASE/$FILE
 done
 
-./Addon/setup-makefiles.sh
+./setup-makefiles.sh
