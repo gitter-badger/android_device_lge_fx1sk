@@ -1,5 +1,5 @@
 #### In progress
-- [x] Can ROM Build
+- [ ] Can ROM Build
 - [ ] Can Booting
 
 #### Next target
