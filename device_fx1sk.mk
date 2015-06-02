@@ -183,7 +183,7 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 	rild.libpath=/system/lib/libril-qc-qmi-1.so \
 	persist.sys.usb.config=mtp	
 
-$(shell mkdir -p /home/cloud9350/android/cm/out/target/product/fx1sk/obj/KERNEL_OBJ/usr/)
+$(shell mkdir -p out/target/product/fx1sk/obj/KERNEL_OBJ/usr/)
 
 $(call inherit-product, hardware/qcom/msm8960/msm8960.mk)
 $(call inherit-product, frameworks/base/data/sounds/AudioPackage10.mk)
